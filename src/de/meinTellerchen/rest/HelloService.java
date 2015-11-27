@@ -33,7 +33,7 @@ public class HelloService {
 		MongoCursor<Document> nameCursor = mdb.collection.find(new Document("name", "Ina")).iterator();
 		int counter = 0;
 		 Morphia morphia = new Morphia();
-/*
+
 		// MongoClient mongo = new MongoClient();
 		morphia.map(Hotel.class).map(Address.class);
 		Datastore ds = morphia.createDatastore(mdb.getMongoClient(), "helge");
@@ -51,8 +51,8 @@ public class HelloService {
 		// set address
 		hotel.setAddress(address);
 		
-		//ds.save(hotel);
-*/
+		ds.save(hotel);
+
 		while (nameCursor.hasNext()) {
 			names.add(nameCursor.next().getString("name"));
 			counter++;
