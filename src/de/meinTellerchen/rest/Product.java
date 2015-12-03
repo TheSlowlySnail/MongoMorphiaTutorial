@@ -1,5 +1,6 @@
 package de.meinTellerchen.rest;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,12 +9,15 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 
 @Entity
-public class Product {
+public class Product implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id private String barcode;
 	@Embedded
-	private List<Ingredients> ingredient = new ArrayList<Ingredients>();
-	@Embedded
-	private List<Ingredients> feel = new ArrayList<Ingredients>();
+	private List<Ingredient> ingredient = new ArrayList<Ingredient>();
 	private String picture;
 	private String brand;
 	private String name;
@@ -34,33 +38,17 @@ public class Product {
 	/**
 	 * @return the ingredient
 	 */
-	public List<Ingredients> getIngredient() {
+	public List<Ingredient> getIngredient() {
 		return ingredient;
 	}
+	
 	/**
 	 * @param ingredient the ingredient to set
 	 */
-	public void setIngredient(Ingredients... ingredient) {
-		for (int i = 0; i < ingredient.length; i++) {
-			
-			this.ingredient.add(ingredient[i]);
-		}
+	public void setIngredient(List<Ingredient> ingredient) {
+		this.ingredient = ingredient;
 	}
-	/**
-	 * @return the feel
-	 */
-	public List<Ingredients> getFeel() {
-		return feel;
-	}
-	/**
-	 * @param feel the feel to set
-	 */
-	public void setFeel(Ingredients... feel) {
-		for (int i = 0; i < feel.length; i++) {
-			this.feel.add(feel[i]);
-			
-		}
-	}
+	
 	/**
 	 * @return the picture
 	 */
@@ -108,6 +96,65 @@ public class Product {
 	 */
 	public void setProducer(String producer) {
 		this.producer = producer;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((barcode == null) ? 0 : barcode.hashCode());
+		result = prime * result + ((brand == null) ? 0 : brand.hashCode());
+		result = prime * result + ((ingredient == null) ? 0 : ingredient.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((picture == null) ? 0 : picture.hashCode());
+		result = prime * result + ((producer == null) ? 0 : producer.hashCode());
+		return result;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Product other = (Product) obj;
+		if (barcode == null) {
+			if (other.barcode != null)
+				return false;
+		} else if (!barcode.equals(other.barcode))
+			return false;
+		if (brand == null) {
+			if (other.brand != null)
+				return false;
+		} else if (!brand.equals(other.brand))
+			return false;
+		if (ingredient == null) {
+			if (other.ingredient != null)
+				return false;
+		} else if (!ingredient.equals(other.ingredient))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (picture == null) {
+			if (other.picture != null)
+				return false;
+		} else if (!picture.equals(other.picture))
+			return false;
+		if (producer == null) {
+			if (other.producer != null)
+				return false;
+		} else if (!producer.equals(other.producer))
+			return false;
+		return true;
 	}
 
 	

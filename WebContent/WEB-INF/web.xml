@@ -26,4 +26,19 @@
 		<servlet-name>jersey-servlet</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>products-servlet</servlet-name>
+		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>de.meinTellerchen.services</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>products-servlet</servlet-name>
+		<url-pattern>/prest/*</url-pattern>
+	</servlet-mapping>
 </web-app>

@@ -5,7 +5,7 @@ import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Id;
 
 @Embedded
-public class Ingredients {
+public class Ingredient {
 	private ObjectId uuid;
 	private String name;
 	private ProductionEnum productionEnum;

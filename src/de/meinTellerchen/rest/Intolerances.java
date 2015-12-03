@@ -20,7 +20,7 @@ public class Intolerances {
 	public ObjectId getUuid() {
 		return uuid;
 	}
-	List<Ingredients> ingredient = new ArrayList<Ingredients>();
+	List<Ingredient> ingredient = new ArrayList<Ingredient>();
 	/**
 	 * @return the name
 	 */
@@ -48,13 +48,13 @@ public class Intolerances {
 	/**
 	 * @return the ingredient
 	 */
-	public List<Ingredients> getIngredient() {
+	public List<Ingredient> getIngredient() {
 		return ingredient;
 	}
 	/**
 	 * @param ingredient the ingredient to set
 	 */
-	public void setIngredient(Ingredients ingredient) {
+	public void setIngredient(Ingredient ingredient) {
 		this.ingredient.add(ingredient);
 	}
 	/**
